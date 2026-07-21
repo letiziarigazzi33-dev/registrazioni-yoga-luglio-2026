@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iscrizione — Yoga Benefico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EEF0E1;
+    --bg-card: #FBFAF3;
+    --ink: #1E2B22;
+    --ink-soft: #4B5A4E;
+    --forest: #2F4A3B;
+    --forest-dark: #223529;
+    --gold: #C99A3B;
+    --clay: #C98A72;
+    --line: #D8D6C4;
+    --radius: 18px;
+    --max: 640px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 64px 24px 48px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    text-align:center;
+    position: relative;
+    padding-top: 148px;
+    margin-bottom: 44px;
+  }
+
+  .breath-rings{
+    position:absolute;
+    top: -18px;
+    left:50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 220px;
+  }
+  .breath-rings svg{ width:100%; height:100%; overflow: visible; }
+  .breath-rings circle{
+    fill:none;
+    stroke-width: 1.4;
+    transform-origin: 50% 50%;
+    animation: breathe 6s ease-in-out infinite;
+  }
+  .ring-1{ stroke: var(--forest); opacity:.55; animation-delay: 0s; }
+  .ring-2{ stroke: var(--gold); opacity:.55; animation-delay: .6s; }
+  .ring-3{ stroke: var(--clay); opacity:.55; animation-delay: 1.2s; }
+
+  @keyframes breathe{
+    0%   { transform: scale(.78); opacity: .15; }
+    45%  { transform: scale(1);   opacity: .6; }
+    55%  { transform: scale(1);   opacity: .6; }
+    100% { transform: scale(.78); opacity: .15; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .breath-rings circle{ animation: none; opacity:.45; }
+  }
+
+  .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--forest);
+    margin: 0 0 10px;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 340;
+    font-size: clamp(34px, 6vw, 46px);
+    line-height: 1.08;
+    margin: 0 0 16px;
+    letter-spacing: -.01em;
+  }
+  h1 em{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--forest);
+  }
+
+  .subhead{
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .subhead b{ color: var(--ink); font-weight: 600; }
+
+  /* ---------- CARD / FORM ---------- */
+  .card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 36px 32px 32px;
+    box-shadow: 0 24px 60px -32px rgba(30,43,34,.35);
+  }
+
+  .field-group{ margin-bottom: 30px; }
+  .field-group:last-of-type{ margin-bottom: 22px; }
+
+  .field-group h2{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--forest-dark);
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 480px){
+    .row{ grid-template-columns: 1fr; }
+  }
+
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  input[type="text"], input[type="email"], textarea{
+    width:100%;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  input::placeholder, textarea::placeholder{ color: #A8A692; }
+
+  input:focus, textarea:focus{
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,154,59,.22);
+  }
+
+  input:invalid:not(:placeholder-shown){ border-color: var(--clay); }
+
+  textarea{ resize: vertical; min-height: 64px; }
+
+  .hint{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 6px 2px 0;
+  }
+
+  /* ---------- CONSENT BLOCKS ---------- */
+  .consent{
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    background: #fff;
+  }
+  .consent-top{
+    display:flex;
+    align-items:flex-start;
+    gap: 10px;
+  }
+  .consent input[type="checkbox"]{
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    accent-color: var(--forest);
+    flex-shrink: 0;
+    cursor:pointer;
+  }
+  .consent label{
+    font-size: 14px;
+    color: var(--ink);
+    cursor:pointer;
+  }
+  .consent label strong{ font-weight:600; }
+
+  .consent details{ margin-top: 8px; margin-left: 27px; }
+  .consent summary{
+    font-size: 12.5px;
+    color: var(--forest);
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+  .legal-text{
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+  .legal-text p{ margin: 0 0 8px; }
+  .legal-text strong{ color: var(--ink); }
+
+  /* ---------- SUBMIT ---------- */
+  button[type="submit"]{
+    width:100%;
+    padding: 15px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: #fff;
+    background: var(--forest);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background .15s ease, transform .1s ease;
+  }
+  button[type="submit"]:hover{ background: var(--forest-dark); }
+  button[type="submit"]:active{ transform: scale(.99); }
+  button[type="submit"]:focus-visible{
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .footnote{
+    text-align:center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 14px 0 0;
+  }
+
+  /* ---------- SUCCESS STATE ---------- */
+  .success{
+    display:none;
+    text-align:center;
+    padding: 36px 20px;
+  }
+  .success.show{ display:block; }
+  .card.hidden{ display:none; }
+  .success h2{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--forest-dark);
+    margin: 0 0 10px;
+  }
+  .success p{ color: var(--ink-soft); font-size: 14.5px; }
+
+  footer{
+    text-align:center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 36px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="breath-rings" aria-hidden="true">
+      <svg viewBox="0 0 220 220">
+        <circle class="ring-1" cx="110" cy="110" r="40"></circle>
+        <circle class="ring-2" cx="110" cy="110" r="66"></circle>
+        <circle class="ring-3" cx="110" cy="110" r="92"></circle>
+      </svg>
+    </div>
+    <p class="eyebrow">Pratica di Yoga Benefico</p>
+    <h1>Respira. <em>Pratica.</em> Dona.</h1>
+    <p class="subhead">
+      <b>Una pratica Yoga "da dentro, a fuori".</b><br>
+      Sabato 25 luglio, ore 9.00 – 10.15<br>
+      Parco sotto il Bosco Verticale – Garibaldi, Milano<br>
+      Il ricavato sarà interamente devoluto a <b style="white-space: nowrap;">EMERGENCY per la Palestina</b>.
+    </p>
+  </header>
+
+  <form class="card" id="regForm" action="#" method="POST" novalidate>
+
+    <!-- Honeypot anti-spam: invisibile per le persone, spesso compilato dai bot. -->
+    <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+      <label for="sito_web">Non compilare questo campo</label>
+      <input type="text" id="sito_web" name="sito_web" tabindex="-1" autocomplete="off">
+    </div>
+
+    <section class="field-group">
+      <h2>I tuoi dati</h2>
+      <div class="row">
+        <div class="field">
+          <label for="nome">Nome *</label>
+          <input required id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Es. Giulia" maxlength="100">
+        </div>
+        <div class="field">
+          <label for="cognome">Cognome *</label>
+          <input required id="cognome" name="cognome" type="text" autocomplete="family-name" placeholder="Es. Rossi" maxlength="100">
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">Email *</label>
+        <input required id="email" name="email" type="email" autocomplete="email" placeholder="nome@esempio.it" maxlength="150">
+        <p class="hint">Ti scriveremo qui la conferma dell'iscrizione e l'esito della tua donazione.</p>
+      </div>
+      <div class="field">
+        <label for="note">Note di salute o esigenze particolari (facoltativo)</label>
+        <textarea id="note" name="note" placeholder="Es. infortuni recenti, gravidanza, limitazioni motorie…" maxlength="500"></textarea>
+      </div>
+    </section>
+
+    <section class="field-group">
+      <h2>Consensi</h2>
+
+      <div class="consent">
+        <div class="consent-top">
+          <input required type="checkbox" id="privacy" name="privacy">
+          <label for="privacy">Ho letto e accetto l'<strong>informativa sulla privacy</strong>, ai sensi del Regolamento UE 2016/679 (GDPR). *</label>
+        </div>
+        <details>
+          <summary>Leggi l'informativa completa</summary>
+          <div class="legal-text">
+            <p><strong>Finalità:</strong> i dati raccolti (nome, cognome, email, eventuali note di salute) sono trattati per gestire l'iscrizione all'evento, comunicare l'esito della donazione e per finalità organizzative connesse alla pratica.</p>
+            <p><strong>Base giuridica:</strong> esecuzione di un accordo con l'interessato e consenso esplicito per le note di salute (dati particolari, art. 9 GDPR).</p>
+            <p><strong>Conservazione:</strong> i dati sono conservati per il tempo necessario alle finalità indicate e comunque non oltre 1 mese, salvo obblighi di legge.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="consent">
+        <div class="consent-top">
+          <input required type="checkbox" id="immagini" name="immagini">
+          <label for="immagini">Autorizzo l'<strong>uso dei miei dati e di eventuali immagini/video</strong> raccolti durante l'evento. *</label>
+        </div>
+        <details>
+          <summary>Leggi l'informativa completa</summary>
+          <div class="legal-text">
+            <p>Durante la pratica potranno essere scattate fotografie o realizzati video a scopo promozionale e documentativo dell'iniziativa benefica.</p>
+            <p>Autorizzo a utilizzare tali immagini, in cui potrei essere ripreso/a, su sito web, social media e materiali stampati legati all'evento, a titolo gratuito e senza limiti di tempo, nel rispetto della dignità personale e senza fini diversi da quelli sopra indicati.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="consent">
+        <div class="consent-top">
+          <input required type="checkbox" id="responsabilita" name="responsabilita">
+          <label for="responsabilita">Dichiaro di partecipare consapevolmente all'attività e <strong>sollevo l'organizzazione da ogni responsabilità</strong> per eventuali infortuni. *</label>
+        </div>
+        <details>
+          <summary>Leggi la dichiarazione completa</summary>
+          <div class="legal-text">
+            <p>Dichiaro sotto la mia responsabilità di essere in condizioni psico-fisiche adeguate a svolgere un'attività di yoga e di non essere a conoscenza di controindicazioni mediche alla pratica. In caso di dubbi, mi impegno a consultare preventivamente un medico.</p>
+            <p>Sono consapevole che, come ogni attività fisica, la pratica comporta un margine di rischio, e sollevo le istruttrici e i collaboratori da ogni responsabilità per infortuni o danni che dovessero verificarsi durante l'evento, salvo i casi di dolo o colpa grave.</p>
+            <p>Partecipo all'evento in forma libera e volontaria, consapevole della sua natura benefica.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <button type="submit">Conferma iscrizione</button>
+    <p class="footnote">I campi contrassegnati con * sono obbligatori.</p>
+  </form>
+
+  <div class="card success" id="successCard">
+    <h2>Grazie, iscrizione ricevuta 🌿</h2>
+    <p>A breve riceverai una email di conferma con tutti i dettagli e, in seguito, l'esito della donazione.</p>
+  </div>
+
+</div>
+
+<script>
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9G0BxfaeFMlkdvOYtNll-IbFTz1bM994YebsPtkUjE-Oo3FEQT5LRwkI8dbo8XM291w/exec';
+
+  const form = document.getElementById('regForm');
+  const successCard = document.getElementById('successCard');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    })
+      .catch(function (err) {
+        console.error('Errore di invio:', err);
+      })
+      .finally(function () {
+        form.classList.add('hidden');
+        successCard.classList.add('show');
+        successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+  });
+</script>
+</body>
+</html>
